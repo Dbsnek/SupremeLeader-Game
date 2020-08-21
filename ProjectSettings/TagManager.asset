@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Carryable
+  - Ground
+  - Wall
+  - Lava
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Ground
+  - Player
+  - 
+  - Throwable
+  - Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2254922969
+    locked: 0
+  - name: Middleground
+    uniqueID: 4162745445
+    locked: 0
+  - name: Foreground
+    uniqueID: 2782447391
+    locked: 0
+  - name: UI1
+    uniqueID: 3678565025
+    locked: 0
+  - name: UI2
+    uniqueID: 2294584975
+    locked: 0
