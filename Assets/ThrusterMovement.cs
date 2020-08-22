@@ -7,7 +7,9 @@ public class ThrusterMovement : MonoBehaviour
     [SerializeField] private float xBound;
     [SerializeField] private float speed = 1;
     [SerializeField] private float maxXScale;
+    [SerializeField] private bool hasScale;
     private Vector2 restartPoint;
+
 
     private void Start()
     {
@@ -16,7 +18,9 @@ public class ThrusterMovement : MonoBehaviour
     void Update()
     {
         Move();
-        Scale();
+
+        if(hasScale)
+            Scale();
     }
 
     private void Move()
