@@ -574,8 +574,8 @@ MonoBehaviour:
     m_Bits: 512
   attackRange: 0
   damage: 20
-  attackBoost: 50
-  meleeForce: 40
+  attackBoost: 800
+  meleeForce: 500
 --- !u!114 &5086341146461559641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,8 +847,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -132221851
-  m_SortingLayer: 2
+  m_SortingLayerID: -1512519905
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

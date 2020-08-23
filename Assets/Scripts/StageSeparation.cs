@@ -49,7 +49,6 @@ public class StageSeparation : MonoBehaviour
         for (var i = 0; i < _platformRigidBody2D.Length; i++)
         {
             _platformRigidBody2D[i].bodyType = RigidbodyType2D.Dynamic;
-            Debug.Log("setting Rigidbody " + i + "to dynamic!");
         }
         
         _ThrusterEffect.Stop();

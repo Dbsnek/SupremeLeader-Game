@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class RocketShip : MonoBehaviour
 {
-    public float firstStageShakeamount;
-    public float secondStageShakeamount;
-    public event Action<int> OnStageSeparation;
+    [Space]
+    [Header("Before launch")]
     public float timeBeforeLaunch;
+
+    [Space]
+    [Header("First stage")]
+    public float firstStageShakeamount;
+    public float firstStageSpinAmount;
     public float timeBeforeFirstSeparation;
+    [Space]
+    [Header("Second stage")]
+    public float secondStageShakeamount;
+    public float secondStageSpinAmount;
     public float timeBeforeSecondSeparation;
+
+
+    public event Action<int> OnStageSeparation;
 
     private float shakeAmount;
 
