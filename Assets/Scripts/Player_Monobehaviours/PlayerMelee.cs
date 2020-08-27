@@ -29,15 +29,15 @@ public class PlayerMelee : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
+    }
+    private void Start()
+    {
+        timeBtwAttack = startTimeBtwAttack;
         _input = _player.input;
         _characterController2D = _player.characterController2D;
         _firePoint = _player.firePoint;
         _characterAnimator = _player.characterAnimator;
         _characterEffectAnimator = _player.characterEffectAnimator;
-    }
-    private void Start()
-    {
-        timeBtwAttack = startTimeBtwAttack;
         _input.OnButtonPressed += Input_OnButtonPressed;
     }
 

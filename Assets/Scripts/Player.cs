@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rigidbody2D {get;set;}
     public PlayerMovement playerMovement { get; private set; }
     public PlayerMelee playerMelee { get; set; }
+    public Jetpack jetpack { get; set; }
 
     public Health health { get; private set; }
     public PlayerThrow playerThrow { get; private set; }
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
     public bool isGrappling { get; set; }
     public bool hasMovement { get; set; }
     public bool hasGrappling { get; set; }
+    public bool hasJetpack { get; set; }
 
     public bool hasGravity;
     public float timeBeforeNextPickUp { get; set; }
@@ -71,6 +73,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        characterController2D = GetComponent<CharacterController2D>();
         _stateMachine = new StateMachine();
         _playerMovement = GetComponentInChildren<PlayerMovement>();
         health = GetComponent<Health>();
@@ -81,7 +84,6 @@ public class Player : MonoBehaviour
         _playerMelee = GetComponent<PlayerMelee>();
         _cameraShake = FindObjectOfType<CameraShake>();
         rigidbody2D = GetComponent<Rigidbody2D>();
-        characterController2D = GetComponent<CharacterController2D>();
         playerMelee = GetComponent<PlayerMelee>();
         playerMovement = GetComponent<PlayerMovement>();
         playerThrow = GetComponent<PlayerThrow>();
@@ -94,12 +96,15 @@ public class Player : MonoBehaviour
         var stunnedState = new StunnedState(this, _CharacterGFX, characterController2D);
         var normalState = new NormalState(_playerMovement, _character, health, this, _playerPickUp, _playerMelee);
         var carryState = new CarryState(this, _playerMovement, _CharacterGFX, health, _playerThrow);
+        var jetpackState = new JetpackState(this);
 
         //Transitions
         //AddTransition(deadState, playerSelectState, PlayerHasJoined());
         AddTransition(stunnedState, normalState, PlayerIsNotStunned());
         AddTransition(normalState, carryState, IsCarrying());
         AddTransition(carryState, normalState, IsNotCarrying());
+        AddTransition(normalState, jetpackState, HasJetpack());
+        AddTransition(jetpackState, normalState, DontHaveJetpack());
 
         AddAnyTransition(stunnedState, PlayerIsStunnedd());
 
@@ -121,6 +126,8 @@ public class Player : MonoBehaviour
         Func<bool> PlayerIsNotStunned() => () => isStunned == false;
         Func<bool> IsCarrying() => () => isCarrying == true;
         Func<bool> IsNotCarrying() => () => isCarrying == false;
+        Func<bool> HasJetpack() => () => hasJetpack == true;
+        Func<bool> DontHaveJetpack() => () => hasJetpack == false;
     }
 
     private void Start()
@@ -149,6 +156,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         _stateMachine.Tick();
+        
     }
 
     public void PlayerJoined()

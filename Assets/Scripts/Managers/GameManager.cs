@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             {
                 OnBombSpawn();
             }
-            float waitTime = UnityEngine.Random.Range(5, 15);
+            float waitTime = UnityEngine.Random.Range(5, 45);
             yield return new WaitForSeconds(waitTime);
         }
     }

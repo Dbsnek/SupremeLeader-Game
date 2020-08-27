@@ -20,12 +20,13 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
-        _controller = GetComponent<CharacterController2D>();
-        _input = GetComponent<PlayerInput_KE>();
+        
     }
 
     private void Start()
     {
+        _controller = _player.characterController2D;
+        _input = _player.input;
         _input.OnButtonPressed += Input_OnButtonPressed;
     }
 
@@ -51,8 +52,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (button == "BbuttonUp")
         {
-        crouch = false;
+            crouch = false;
         }
+
+        
+            
     }
 
     void Update()
@@ -78,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
      {
          _movementInput = _input.movementInput;
          horizontalMove = _movementInput.x * runSpeed;
-        }
+     }
 
     private void Move()
     {

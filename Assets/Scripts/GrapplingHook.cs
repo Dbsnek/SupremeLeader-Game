@@ -24,11 +24,12 @@ public class GrapplingHook : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _joint = GetComponent<DistanceJoint2D>();
-        _input = _player.input;
-        _characterController2D = _player.characterController2D;
+        
     }
     void Start()
     {
+        _input = _player.input;
+        _characterController2D = _player.characterController2D;
         _joint.enabled = false;
         line.enabled = false;
         _input.OnButtonPressed += Input_OnButtonPressed;
@@ -94,11 +95,12 @@ public class GrapplingHook : MonoBehaviour
         {
 
             line.SetPosition(0, transform.position);
-            line.SetPosition(1, targetTransform.position);
+
+            if(targetTransform != null)
+                line.SetPosition(1, targetTransform.position);
             
             if(_input.movementInput.y > 0)
             {
-                Debug.Log("stepping down" + _joint.distance);
                 _joint.distance -= step * Time.deltaTime;
             }
             
